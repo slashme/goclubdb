@@ -5,10 +5,6 @@ admin.autodiscover()
 
 import goclubdb.views
 
-# Examples:
-# url(r'^$', 'gettingstarted.views.home', name='home'),
-# url(r'^blog/', include('blog.urls')),
-
 urlpatterns = [
     url(r'^$', goclubdb.views.index, name='index'),
     url(r'^db', goclubdb.views.db, name='db'),
