@@ -9,13 +9,13 @@
 <h2><a href="/clubs/{{ layer.name }}">{{ layer.name }}</a></h2>
 <h3>{{ club.name }}: <a href="{{ club.website }}">{{ club.description }}</a></h3>
 <table>
-  <tr> <td>Name: </td><td>{{ club.name }}</td> </tr>
-  <tr>
-    <td>Description: </td><td>{{ club.description }}</td>
-  </tr>
-  <tr>
-    <td>Website:</td><td><a href={{ club.website }}>{{ club.website }}</a></td>
-  </tr>
+  <tr><td>Name:          </td><td>{{ club.name }}                                  </td></tr>
+  <tr><td>Meeting time:  </td><td>{{ club.meettime }}                              </td></tr>
+  <tr><td>Meeting place: </td><td>{{ club.meetplace }}                             </td></tr>
+  <tr><td>Coordinates:   </td><td>Lat: {{ club.lat }}; Lon: {{ club.lon }}         </td></tr>
+  <tr><td>Postal code:   </td><td>{{ club.postcode }}                              </td></tr>
+  <tr><td>Contact:       </td><td>{{ club.contact }}                               </td></tr>
+  <tr><td>Website:       </td><td><a href={{ club.website }}>{{ club.website }}</a></td></tr>
 </table>
 
 </div>
