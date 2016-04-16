@@ -1,13 +1,15 @@
 from django.shortcuts import render
 from django.http import Http404
 from django.http import HttpResponse
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.core.urlresolvers import reverse_lazy
 
-from .models import Layer, Club, Clubtype, Clubstatus
+from .models import Layer, Club, Clubtype, Clubstatus, ClubForm, LayerForm, ClubtypeForm, ClubstatusForm
 
 #Static greeting page
 def index(request):
-    return render(request, 'index.html')
-
+    layers = Layer.objects.all()
+    return render(request, 'layerlist.html', {'layers': layers})
 
 def layerlist(request):
     layers = Layer.objects.all()
@@ -28,3 +30,16 @@ def clubdetail(request, clubid):
         return render(request, 'layerlist.html', {'layers': layers}) #Redirect to layer list
     clublayer = Layer.objects.filter(id=club[0].layer_id)
     return render(request, 'clubdetail.html', {'club': club[0], 'layer': clublayer[0]})
+
+class ClubCreate(CreateView):
+    model = Club
+    fields = ['name', 'meettime', 'meetplace', 'postcode', 'contact', 'website', 'layer', 'clubstatus', 'clubtype', 'lat', 'lon']
+
+class ClubUpdate(UpdateView):
+    model = Club
+    form_class = ClubForm
+
+class ClubDelete(DeleteView):
+    model = Club
+    fields = ['name', 'meettime', 'meetplace', 'postcode', 'contact', 'website', 'layer', 'clubstatus', 'clubtype', 'lat', 'lon']
+
