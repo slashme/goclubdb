@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+  <div class="container">
+
+
+<h2><a href=/layers/>Club list</a></h2>
+<h3>{{ layer.name }}: <a href="{{ layer.website }}">{{ layer.description }}</a></h3>
+<table>
+{% for club in clubs %}
+<tr><td><a href=/club/{{club.id}}>{{ club.name }}</a></td> <td>{{ club.description }}</td> <td><a href={{ club.website }}>{{ club.website }}</a></td></tr>
+{% endfor %}
+</table>
+
+</div>
+
+{% endblock %}
