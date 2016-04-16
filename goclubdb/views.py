@@ -26,4 +26,5 @@ def clubdetail(request, clubid):
     if len(club) != 1: #Must be one and only one club with this name.
         layers = Layer.objects.all()
         return render(request, 'layerlist.html', {'layers': layers}) #Redirect to layer list
-    return render(request, 'clubdetail.html', {'club': club[0]})
+    clublayer = Layer.objects.filter(id=club[0].layer_id)
+    return render(request, 'clubdetail.html', {'club': club[0], 'layer': clublayer[0]})
