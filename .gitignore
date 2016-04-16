@@ -4,3 +4,4 @@ staticfiles
 .env
 db.sqlite3
 .*.swp
+[0-9]*_auto_*.py
