@@ -41,9 +41,7 @@ class ClubCreateLayer(CreateView):
     form_class = ClubForm
     def get_initial(self):
         layer = get_object_or_404(Layer, name=self.kwargs.get('name'))
-        return {
-            'layer':layer,
-        }
+        return { 'layer':layer }
 
 class ClubUpdate(UpdateView):
     model = Club
