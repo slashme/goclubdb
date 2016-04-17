@@ -33,7 +33,7 @@ def clubdetail(request, clubid):
 
 class ClubCreate(CreateView):
     model = Club
-    fields = ['name', 'meettime', 'meetplace', 'postcode', 'contact', 'website', 'layer', 'clubstatus', 'clubtype', 'lat', 'lon']
+    form_class = ClubForm
 
 class ClubUpdate(UpdateView):
     model = Club
@@ -41,5 +41,5 @@ class ClubUpdate(UpdateView):
 
 class ClubDelete(DeleteView):
     model = Club
-    fields = ['name', 'meettime', 'meetplace', 'postcode', 'contact', 'website', 'layer', 'clubstatus', 'clubtype', 'lat', 'lon']
+    form_class = ClubForm
 
