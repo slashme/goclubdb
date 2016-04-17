@@ -5,11 +5,13 @@
 <div class="container">
 
 <h2>Map layers</h2>
-
+<h3><a href="/layer/create">Add a layer</a></h3>
 <table>
 {% for layer in object_list %}
     <tr>
-      <td><a href=/clubs/{{ layer.name }}>{{ layer.name }}</a></td> <td> <a href="{{ layer.website }}">{{ layer.description }}</a></td>
+      <td><a href=/layer/{{layer.id}}/edit>[Edit]</a></td> 
+      <td><a href=/clubs/{{ layer.name }}>{{ layer.name }}</a></td> 
+      <td><a href="{{ layer.website }}">{{ layer.description }}</a></td>
     </tr>
 {% endfor %}
 </table>

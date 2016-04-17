@@ -45,6 +45,10 @@ class LayerCreate(CreateView):
     model = Layer
     form_class = LayerForm
 
+class LayerUpdate(UpdateView):
+    model = Layer
+    form_class = LayerForm
+
 class ClubCreate(CreateView):
     model = Club
     form_class = ClubForm
