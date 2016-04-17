@@ -2,6 +2,7 @@ from django.db import models
 from django import forms
 from django.forms import ModelForm
 from django.utils.encoding import python_2_unicode_compatible
+from django.utils.translation import ugettext_lazy as _
 
 @python_2_unicode_compatible
 class Layer(models.Model):
@@ -68,6 +69,10 @@ class ClubForm(ModelForm):
     class Meta:
         model = Club
         fields = ['name', 'meettime', 'meetplace', 'postcode', 'contact', 'website', 'layer', 'clubstatus', 'clubtype', 'lat', 'lon']
+        labels  = {
+                'clubstatus': _('Club status'),
+                'clubtype':   _('Club type'),
+        }
         widgets = {
                 'meetplace': forms.Textarea(attrs={'rows': 2}),
                 'meettime':  forms.Textarea(attrs={'rows': 2}),
