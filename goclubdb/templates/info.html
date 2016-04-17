@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="text-center">
+  <iframe width="100%" height="300px" frameBorder="0" src="http://umap.openstreetmap.fr/en/map/go-clubs_76310?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&allowEdit=false&moreControl=true&datalayersControl=true&onLoadPanel=undefined&captionBar=false"></iframe><p><a href="http://umap.openstreetmap.fr/en/map/go-clubs_76310">See on umap.openstreetmap.fr</a></p>
+  <div class="container">
+    <h1>An international go club map</h1>
+    <p>This is an attempt to create a database-driven map of the Baduk/Igo/Weiqi clubs of the world. I maintain <a href="http://umap.openstreetmap.fr/map/go-clubs_76310">a stable version</a> and <a href="http://umap.openstreetmap.fr/en/map/testing-go-clubs_76360">a free-to-edit version</a> of a map of go clubs. I periodically check for edits to the free-to-edit map, and include them in the database. I also periodically check the database for new data (and vandalism), and regenerate the maps based on the latest version of the database.</p>
+    <h2>How you can help</h2>
+    <h3>Data</h3>
+    <p>If you have access to a national database and would like to contribute data, please do! You can reach me at <a href="mailto:davidrichfield@gmail.com">davidrichfield@gmail.com</a> to contribute data. I'll take almost any sensible format: CSV, SQL, even proprietary spreadsheet formats.</p>
+    <p>You can also correct the information in this database directly, or add clubs by hand. In each list of national clubs, you'll see "[edit]" links. You can click them to fix any club information.</p>
+    <h3>Code improvements</h3>
+    <p>I keep the source code for this project <a href="https://github.com/slashme/goclubdb">on GitHub</a> and any corrections or improvements are very welcome.</p>
+    <p>I also have some tools for importing and exporting from umap <a href="https://github.com/slashme/clublisttool">on another GitHub repository</a>. They're pretty rudimentary, though.</p>
+    <h3>Spreading the word</h3>
+    <p>Please tell other go players about this project if you find it useful. The more eyeballs, the better it will be.</p>
+    <h3>Paying for bandwidth</h3>
+    <p>If this project becomes really popular, I might need to spend a noticeable amount of money to keep it online. In that case, I will put a begging button on this site. It hasn't come to that yet, though.</p>
+  </div>
+</div>
+{% endblock %}

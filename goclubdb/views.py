@@ -7,7 +7,11 @@ from django.core.urlresolvers import reverse_lazy
 
 from .models import Layer, Club, Clubtype, Clubstatus, ClubForm, LayerForm, ClubtypeForm, ClubstatusForm
 
-#Static greeting page
+#Static info page
+def info(request):
+    layers = Layer.objects.all()
+    return render(request, 'info.html')
+
 def index(request):
     layers = Layer.objects.all()
     return render(request, 'layerlist.html', {'layers': layers})
