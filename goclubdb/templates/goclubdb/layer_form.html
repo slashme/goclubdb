@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+  <div class="container">
+
+
+<h1><a href=/layers/>Back to main list</a></h1>
+<h2>Update layer</h2>
+<form action="" method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" name="update" value="Update">
+</form>
+{% endblock %}

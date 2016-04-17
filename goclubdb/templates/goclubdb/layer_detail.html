@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container">
+
+  <h2>Layer {{ object.name }}</h2>
+  <ul>
+  <li>{{object.description}}</li>
+  <li><a href="{{object.website}}">{{object.website}}</a></li>
+  <li>Color: <span style="color:{{object.color}}">{{object.color}}</span></li>
+  </ul>
+
+</div>
+
+{% endblock %}

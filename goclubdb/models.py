@@ -12,7 +12,7 @@ class Layer(models.Model):
     class Meta:
         ordering = ["name"]
     def get_absolute_url(self):
-        return reverse('layer-detail',kwargs={'name':self.name})
+        return "/layer/%i/" % self.id
     name        = models.CharField('Layer name, normally ISO 3166-1 country code', max_length=100)
     description = models.TextField('Description of the layer')
     website     = models.URLField('Website of the organisation, if any')
