@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -34,6 +34,16 @@ def clubdetail(request, clubid):
 class ClubCreate(CreateView):
     model = Club
     form_class = ClubForm
+
+#Create club with layer pre-populated
+class ClubCreateLayer(CreateView):
+    model = Club
+    form_class = ClubForm
+    def get_initial(self):
+        layer = get_object_or_404(Layer, name=self.kwargs.get('name'))
+        return {
+            'layer':layer,
+        }
 
 class ClubUpdate(UpdateView):
     model = Club

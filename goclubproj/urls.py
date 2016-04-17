@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^club/(?P<clubid>[0-9]+)/$', goclubdb.views.clubdetail, name='clubdetail'),
     url(r'^club/(?P<pk>[0-9]+)/edit', goclubdb.views.ClubUpdate.as_view(), name='update_club'),
     url(r'^club/create', goclubdb.views.ClubCreate.as_view(), name='create_club'),
+    url(r'^club/(?P<name>[A-Z]+)/create', goclubdb.views.ClubCreateLayer.as_view(), name='create_club'),
 ]

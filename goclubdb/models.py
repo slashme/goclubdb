@@ -7,6 +7,8 @@ class Layer(models.Model):
     # Table of map layers: each one should be an organisation, e.g. a country's clubs
     def __str__(self):
         return self.name
+    def get_absolute_url(self):
+        return reverse('layer-detail',kwargs={'name':self.name})
     name        = models.CharField('Layer name, normally ISO 3166-1 country code', max_length=100)
     description = models.TextField('Description of the layer')
     website     = models.URLField('Website of the organisation, if any')
