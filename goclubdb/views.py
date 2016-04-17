@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -20,8 +20,7 @@ def index(request):
 def clublist(request, layername):
     layer = Layer.objects.filter(name=layername)
     if len(layer) != 1: #Must be one and only one layer with this name.
-        layers = Layer.objects.all()
-        return render(request, 'layerlist.html', {'layers': layers}) #Redirect to layer list
+        return redirect('/') #Redirect to layer list
     clubs = Club.objects.filter(layer__name=layername)
     return render(request, 'clublist.html', {'clubs': clubs, 'layer': layer[0]})
 
