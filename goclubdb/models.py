@@ -37,7 +37,7 @@ class Club(models.Model):
     def get_absolute_url(self):
         return "/club/%i/" % self.id
     name        = models.CharField('A uniquely defining name for the club', max_length=1000)
-    meettime    = models.TextField('Meeting times of the club (as text for now)', max_length=300, null=True, blank=True)
+    meettime    = models.TextField('Meeting times of the club (as text for now)', null=True, blank=True)
     meetplace   = models.TextField('Meeting place of the club (as text address)', null=True, blank=True)
     #Adding this because some countries like Germany like to refer to clubs by postal code
     postcode    = models.CharField('Postal code', max_length=32, null=True, blank=True)
