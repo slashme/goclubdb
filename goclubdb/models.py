@@ -13,7 +13,7 @@ class Layer(models.Model):
         ordering = ["name"]
     def get_absolute_url(self):
         return "/layer/%i/" % self.id
-    name        = models.CharField('Layer name, normally ISO 3166-1 country code', max_length=100)
+    name        = models.CharField('Layer name, normally ISO 3166-1 country code', max_length=100, unique=True)
     description = models.TextField('Description of the layer')
     website     = models.URLField('Website of the organisation, if any')
     color       = models.CharField('Color of the marker; must be a valid HTML color name', max_length=25)
