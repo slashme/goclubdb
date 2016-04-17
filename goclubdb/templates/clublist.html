@@ -10,7 +10,12 @@
 <h4><a href="/club/{{ layer.name }}/create">Add a club</a></h4>
 <table>
 {% for club in clubs %}
-<tr><td><a href=/club/{{club.id}}>{{ club.name }}</a></td> <td>{{ club.description }}</td> <td><a href={{ club.website }}>{{ club.website }}</a></td></tr>
+<tr>
+  <td><a href=/club/{{club.id}}/edit>[Edit]</a></td> 
+  <td><a href=/club/{{club.id}}>{{ club.name }}</a></td> 
+  <td>{{ club.description }}</td> 
+  <td><a href={{ club.website }}>{{ club.website }}</a></td>
+</tr>
 {% endfor %}
 </table>
 </div>
