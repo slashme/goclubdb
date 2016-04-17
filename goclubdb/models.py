@@ -9,6 +9,8 @@ class Layer(models.Model):
     # Table of map layers: each one should be an organisation, e.g. a country's clubs
     def __str__(self):
         return self.name
+    class Meta:
+        ordering = ["name"]
     def get_absolute_url(self):
         return reverse('layer-detail',kwargs={'name':self.name})
     name        = models.CharField('Layer name, normally ISO 3166-1 country code', max_length=100)
