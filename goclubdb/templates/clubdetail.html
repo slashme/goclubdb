@@ -8,6 +8,7 @@
 <h1><a href=/layers/>Back to main list</a></h1>
 <h2><a href="/clubs/{{ layer.name }}">{{ layer.name }}</a></h2>
 <h3>{{ club.name }}: <a href="{{ club.website }}">{{ club.description }}</a></h3>
+<h4><a href="/club/{{club.id}}/edit">Edit club details</a></h4>
 <table>
   <tr><td>Name:          </td><td>{{ club.name }}                                  </td></tr>
   <tr><td>Meeting time:  </td><td>{{ club.meettime }}                              </td></tr>
@@ -17,7 +18,6 @@
   <tr><td>Contact:       </td><td>{{ club.contact }}                               </td></tr>
   <tr><td>Website:       </td><td><a href={{ club.website }}>{{ club.website }}</a></td></tr>
 </table>
-<a href="/club/{{club.id}}/edit">Edit club details</a>
 </div>
 
 {% endblock %}
