@@ -21,6 +21,7 @@ function init()
     controls: 
       [
       new OpenLayers.Control.PanZoomBar(),                        
+      new OpenLayers.Control.Navigation({documentDrag: true}),
       new OpenLayers.Control.LayerSwitcher({}),
       new OpenLayers.Control.Permalink(),
         new OpenLayers.Control.MousePosition({}),
@@ -85,5 +86,6 @@ OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
     </table>
     <input type="submit" name="update" value="Update">
 </form>
+<h2>Click on the map to set club coordinates</h2>
 <div id="Map" style="height: 650px" ></div>
 {% endblock %}
