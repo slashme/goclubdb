@@ -2,21 +2,27 @@
 {% load staticfiles %}
 
 {% block content %}
-  <div class="container">
-
+<script src={% static 'sorttable.js' %}></script>
+<div class="container">
 
 <h2><a href=/layers/>Back to main list</a></h2>
 <h3>{{ layer.name }}: <a href="{{ layer.website }}">{{ layer.description }}</a></h3>
 <h4><a href="/club/{{ layer.name }}/create">Add a club</a></h4>
-<table>
-{% for club in clubs %}
-<tr>
-  <td><a href=/club/{{club.id}}/edit>[Edit]</a></td> 
-  <td><a href=/club/{{club.id}}>{{ club.name }}</a></td> 
-  <td>{{ club.description }}</td> 
-  <td><a href={{ club.website }}>{{ club.website }}</a></td>
-</tr>
-{% endfor %}
+<table class="sortable">
+  <tr>
+    <th></th>
+    <th style="text-align:center">Postal<br/>code</th>
+    <th>Club name</th>
+    <th>Club website</th>
+  </tr>
+  {% for club in clubs %}
+  <tr>
+    <td><a href=/club/{{club.id}}/edit>[Edit]</a></td> 
+    <td>{% if club.postcode == None %}{{ "" }}{% else %}{{ club.postcode }}{% endif %}</td> 
+    <td><a href=/club/{{club.id}}>{{ club.name }}</a></td> 
+    <td><a href={{ club.website }}>{{ club.website }}</a></td>
+  </tr>
+  {% endfor %}
 </table>
 </div>
 
