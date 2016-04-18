@@ -2,15 +2,21 @@
 {% load staticfiles %}
 
 {% block content %}
+<script src={% static 'sorttable.js' %}></script>
 <div class="container">
 
 <h2>Map layers</h2>
 <h3><a href="/layer/create">Add a layer</a></h3>
-<table>
+<table class="sortable">
+  <tr>
+    <th></th>
+    <th style="text-align:center">Club<br/>list</th>
+    <th style="text-align:center">Website</th>
+  </tr>
 {% for layer in object_list %}
     <tr>
       <td><a href=/layer/{{layer.id}}/edit>[Edit]</a></td> 
-      <td><a href=/clubs/{{ layer.name }}>{{ layer.name }}</a></td> 
+      <td style="text-align:center"><a href=/clubs/{{ layer.name }}>{{ layer.name }}</a></td> 
       <td><a href="{{ layer.website }}">{{ layer.description }}</a></td>
     </tr>
 {% endfor %}
