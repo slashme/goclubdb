@@ -4,9 +4,9 @@
 <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
 <script>
 var map,vectorLayer;
-var lat             =   0.0;
-var lon            =    0.0;
-var zoom        =   5;
+var lat    =   {% if form.lat.value == None %}{{ 0.0 }}{% else %}{{ form.lat.value }}{% endif %};
+var lon    =   {% if form.lon.value == None %}{{ 0.0 }}{% else %}{{ form.lon.value }}{% endif %};
+var zoom   =   {% if form.lon.value == None %}{{ 5 }}{% else %}{{ 14 }}{% endif %};
 var curpos = new Array();
 var position;
 
