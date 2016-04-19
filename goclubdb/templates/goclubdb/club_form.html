@@ -79,6 +79,7 @@ OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
 
 <h1><a href=/layers/>Back to main list</a></h1>
 <h2>Update club</h2>
+<h4 style="color:red"><a href="/club/{{club.id}}/delete">Delete club</a></h4>
 <form action="" method="POST">
     {% csrf_token %}
     <table>
