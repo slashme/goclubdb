@@ -70,9 +70,15 @@ OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
     lonlat1= new OpenLayers.LonLat(lonlat.lon,lonlat.lat).transform(toProjection,fromProjection);
     document.getElementById("id_lat").value = lonlat1.lat;
     document.getElementById("id_lon").value = lonlat1.lon;
+    var s = document.createElement('script');
+    s.src = 'http://nominatim.openstreetmap.org/reverse?json_callback=cb&format=json&lat='+lonlat1.lat+'&lon='+lonlat1.lon+'&addressdetails=1';
+    document.getElementsByTagName('head')[0].appendChild(s);
   }
 
 });
+  cb = function cb(json) {
+    document.getElementById("id_postcode").value = json.address.postcode;
+  };
 </script>
 
 <div class="container">
