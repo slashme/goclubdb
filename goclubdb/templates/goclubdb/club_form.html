@@ -20,13 +20,13 @@ function init()
   map = new OpenLayers.Map("Map",{
     controls: 
       [
-      new OpenLayers.Control.PanZoomBar(),                        
-      new OpenLayers.Control.Navigation({documentDrag: true}),
-      new OpenLayers.Control.LayerSwitcher({}),
-      new OpenLayers.Control.Permalink(),
+        new OpenLayers.Control.PanZoomBar(),                        
+        new OpenLayers.Control.Navigation({documentDrag: true}),
+        new OpenLayers.Control.LayerSwitcher({}),
+        new OpenLayers.Control.Permalink(),
         new OpenLayers.Control.MousePosition({}),
         new OpenLayers.Control.ScaleLine(),
-          new OpenLayers.Control.OverviewMap(),
+        new OpenLayers.Control.OverviewMap(),
       ]
   }
   );
@@ -42,7 +42,7 @@ function init()
   click.activate();
 };
 
-OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {               
+OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
   defaultHandlerOptions: {
     'single': true,
     'double': false,
@@ -70,16 +70,24 @@ OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
     lonlat1= new OpenLayers.LonLat(lonlat.lon,lonlat.lat).transform(toProjection,fromProjection);
     document.getElementById("id_lat").value = lonlat1.lat;
     document.getElementById("id_lon").value = lonlat1.lon;
-    var s = document.createElement('script');
-    s.src = 'http://nominatim.openstreetmap.org/reverse?json_callback=cb&format=json&lat='+lonlat1.lat+'&lon='+lonlat1.lon+'&addressdetails=1';
-    document.getElementsByTagName('head')[0].appendChild(s);
   }
 
 });
+</script>
+<script>
+  function fillpostcode() {
+    var s = document.createElement('script');
+    s.src = 'http://nominatim.openstreetmap.org/reverse?json_callback=cb&format=json&lat='+document.getElementById("id_lat").value+'&lon='+document.getElementById("id_lon").value+'&addressdetails=1';
+    document.getElementById('callbackscript').innerHTML="";
+    document.getElementById('callbackscript').appendChild(s);
+  }
+
   cb = function cb(json) {
     if (typeof json.address.postcode != "undefined") {document.getElementById("id_postcode").value = json.address.postcode};
-  };
+  }
 </script>
+<div id="callbackscript">
+</div>
 
 <div class="container">
 
@@ -89,7 +97,51 @@ OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
 <form action="" method="POST">
     {% csrf_token %}
     <table>
-        {{ form.as_table }}
+      <tr class="fieldWrapper">
+        <th>{{ form.name.label_tag }}</th>
+        <td colspan="2">{{ form.name }}{{ form.name.errors }}</td>
+      </tr>
+      <tr class="fieldWrapper">
+        <th>{{ form.meettime.label_tag }}</th>
+        <td colspan="2">{{ form.meettime }}{{ form.meettime.errors }}</td>
+      </tr>
+      <tr class="fieldWrapper">
+        <th>{{ form.meetplace.label_tag }}</th>
+        <td colspan="2">{{ form.meetplace }}{{ form.meetplace.errors }}</td>
+      </tr>
+      <tr class="fieldWrapper">
+        <th>{{ form.postcode.label_tag }}</th>
+        <td>{{ form.postcode }}{{ form.postcode.errors }}</td>
+        <td><button type="button" onclick="fillpostcode()">look up postcode</button></td>
+      </tr>
+      <tr class="fieldWrapper">
+        <th>{{ form.contact.label_tag }}</th>
+        <td colspan="2">{{ form.contact }}{{ form.contact.errors }}</td>
+      </tr>
+      <tr class="fieldWrapper">
+        <th>{{ form.website.label_tag }}</th>
+        <td colspan="2">{{ form.website }}{{ form.website.errors }}</td>
+      </tr>
+      <tr class="fieldWrapper">
+        <th>{{ form.layer.label_tag }}</th>
+        <td colspan="2">{{ form.layer }}{{ form.layer.errors }}</td>
+      </tr>
+      <tr class="fieldWrapper">
+        <th>{{ form.clubstatus.label_tag }}</th>
+        <td colspan="2">{{ form.clubstatus }}{{ form.clubstatus.errors }}</td>
+      </tr>
+      <tr class="fieldWrapper">
+        <th>{{ form.clubtype.label_tag }}</th>
+        <td colspan="2">{{ form.clubtype }}{{ form.clubtype.errors }}</td>
+      </tr>
+      <tr class="fieldWrapper">
+        <th>{{ form.lat.label_tag }}</th>
+        <td colspan="2">{{ form.lat }}{{ form.lat.errors }}</td>
+      </tr>
+      <tr class="fieldWrapper">
+        <th>{{ form.lon.label_tag }}</th>
+        <td colspan="2">{{ form.lon }}{{ form.lon.errors }}</td>
+      </tr>
     </table>
     <input type="submit" name="update" value="Update">
 </form>
