@@ -73,8 +73,7 @@ OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
   }
 
 });
-</script>
-<script>
+
   function fillpostcode() {
     var s = document.createElement('script');
     s.src = 'http://nominatim.openstreetmap.org/reverse?json_callback=cb&format=json&lat='+document.getElementById("id_lat").value+'&lon='+document.getElementById("id_lon").value+'&addressdetails=1';
@@ -85,8 +84,24 @@ OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
   cb = function cb(json) {
     if (typeof json.address.postcode != "undefined") {document.getElementById("id_postcode").value = json.address.postcode};
   }
+
+  function addresslookup() {
+    var s = document.createElement('script');
+    s.src = 'http://nominatim.openstreetmap.org/search?format=json&limit=1&json_callback=cb2&q='+document.getElementById("id_meetplace").value;
+    document.getElementById('addrscript').innerHTML="";
+    document.getElementById('addrscript').appendChild(s);
+  }
+
+  cb2 = function cb2(json) {
+    if (typeof json[0].lat != "undefined") {document.getElementById("id_lat").value = json[0].lat};
+    if (typeof json[0].lon != "undefined") {document.getElementById("id_lon").value = json[0].lon};
+    cntrposition       = new OpenLayers.LonLat(json[0].lon, json[0].lat).transform( fromProjection, toProjection);
+    if (typeof json[0].lat != "undefined" && typeof json[0].lon != "undefined") {map.setCenter(cntrposition, 16)};
+  }
 </script>
 <div id="callbackscript">
+</div>
+<div id="addrscript">
 </div>
 
 <div class="container">
@@ -108,6 +123,10 @@ OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
       <tr class="fieldWrapper">
         <th>{{ form.meetplace.label_tag }}</th>
         <td colspan="2">{{ form.meetplace }}{{ form.meetplace.errors }}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td colspan="2" style="text-align:center"><button type="button" onclick="addresslookup()">look up address</button></td>
       </tr>
       <tr class="fieldWrapper">
         <th>{{ form.postcode.label_tag }}</th>
