@@ -77,7 +77,7 @@ OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
 
 });
   cb = function cb(json) {
-    document.getElementById("id_postcode").value = json.address.postcode;
+    if (typeof json.address.postcode != "undefined") {document.getElementById("id_postcode").value = json.address.postcode};
   };
 </script>
 
