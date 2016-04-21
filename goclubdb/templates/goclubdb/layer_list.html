@@ -10,13 +10,15 @@
 <table class="sortable">
   <tr>
     <th></th>
-    <th style="text-align:center">Club<br/>list</th>
-    <th style="text-align:center">Website</th>
+    <th class="sorttable_nosort"></th>
+    <th class="sorttable_nosort"></th>
+    <th style="text-align:center">Association website</th>
   </tr>
 {% for layer in object_list %}
     <tr>
-      <td><a href=/layer/{{layer.id}}/edit>[Edit]</a></td> 
-      <td style="text-align:center"><a href=/clubs/{{ layer.name }}>{{ layer.name }}</a></td> 
+      <td>{{ layer.name }}</td> 
+      <td><a href=/layer/{{layer.id}}/edit>[Edit layer details]</a></td> 
+      <td><a href=/clubs/{{ layer.name }}>[Edit club list]</a></td> 
       <td><a href="{{ layer.website }}">{{ layer.description }}</a></td>
     </tr>
 {% endfor %}
