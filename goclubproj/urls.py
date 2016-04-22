@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^layer/create', goclubdb.views.LayerCreate.as_view(), name='create_layer'),
     url(r'^club/(?P<name>[A-Z]+)/create', goclubdb.views.ClubCreateLayer.as_view(), name='create_club'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^accounts/', include('allauth.urls')),
 ]
