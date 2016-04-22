@@ -1,5 +1,8 @@
 from django.conf.urls import include, url
 
+from django.contrib import admin
+admin.autodiscover()
+
 import goclubdb.views
 
 urlpatterns = [
@@ -16,4 +19,5 @@ urlpatterns = [
     url(r'^club/create', goclubdb.views.ClubCreate.as_view(), name='create_club'),
     url(r'^layer/create', goclubdb.views.LayerCreate.as_view(), name='create_layer'),
     url(r'^club/(?P<name>[A-Z]+)/create', goclubdb.views.ClubCreateLayer.as_view(), name='create_club'),
+    url(r'^admin/', include(admin.site.urls)),
 ]
