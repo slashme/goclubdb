@@ -31,6 +31,7 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = (
+    'goclubdb',
     'django.contrib.auth',
     'django.contrib.admin',
     'django.contrib.contenttypes',
@@ -52,7 +53,6 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.reddit',
     'allauth.socialaccount.providers.vk',
     'allauth.socialaccount.providers.weibo',
-    'goclubdb'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -158,4 +158,7 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-SITE_ID = 1
+SITE_ID = 2
+
+#Redirect to home page on successful login
+LOGIN_REDIRECT_URL = "/"
