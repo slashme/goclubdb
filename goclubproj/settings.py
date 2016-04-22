@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_auth',
     'goclubdb'
 )
 
@@ -110,6 +111,8 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+#Force https for social-auth
+SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
 # Update database configuration with $DATABASE_URL.
 db_from_env = dj_database_url.config(conn_max_age=500)
