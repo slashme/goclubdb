@@ -68,7 +68,7 @@ a[href*="//"]::after {
       {% if request.user.is_authenticated %}
       {% load avatar_tags %}
       <li>
-        <img width="32" height="32" src="{% avatar user 32 %}" />
+        {% avatar user 32 %}
       </li>
       <li>
         <a href="/accounts/logout"><span class="glyphicon glyphicon-off"></span> Logout</a>
