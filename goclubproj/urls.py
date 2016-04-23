@@ -3,6 +3,10 @@ from django.conf.urls import include, url
 from django.contrib import admin
 admin.autodiscover()
 
+from goclubdb.api import LayerResource, ClubResource
+layer_resource = LayerResource()
+club_resource = ClubResource()
+
 import goclubdb.views
 
 urlpatterns = [
@@ -22,4 +26,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^avatar/', include('avatar.urls')),
+    url(r'^api/', include(layer_resource.urls)),
 ]
