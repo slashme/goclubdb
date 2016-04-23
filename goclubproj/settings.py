@@ -52,6 +52,7 @@ INSTALLED_APPS = (
     #'allauth.socialaccount.providers.linkedin_oauth2',
     'allauth.socialaccount.providers.reddit',
     'allauth.socialaccount.providers.vk',
+    'avatar',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -161,3 +162,6 @@ SITE_ID = 3
 
 #Redirect to home page on successful login
 LOGIN_REDIRECT_URL = "/"
+
+#Setup for avatar support
+SOCIALACCOUNT_AVATAR_SUPPORT = 'avatar'

@@ -66,8 +66,9 @@ a[href*="//"]::after {
         <a href="http://umap.openstreetmap.fr/map/go-clubs_76310"><span class="glyphicon glyphicon-globe"></span> View the map</a>
       </li>
       {% if request.user.is_authenticated %}
+      {% load avatar_tags %}
       <li>
-        <img width="50" height="50" src="{{ account.get_avatar_url }}" />
+        <img width="32" height="32" src="{% avatar user 32 %}" />
       </li>
       <li>
         <a href="/accounts/logout"><span class="glyphicon glyphicon-off"></span> Logout</a>
