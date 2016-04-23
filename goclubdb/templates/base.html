@@ -65,6 +65,18 @@ a[href*="//"]::after {
       <li>
         <a href="http://umap.openstreetmap.fr/map/go-clubs_76310"><span class="glyphicon glyphicon-globe"></span> View the map</a>
       </li>
+      {% if request.user.is_authenticated %}
+      <li>
+        <img width="50" height="50" src="{{ account.get_avatar_url }}" />
+      </li>
+      <li>
+        <a href="/accounts/logout"><span class="glyphicon glyphicon-off"></span> Logout</a>
+      </li>
+      {% else %}
+      <li>
+        <a href="/accounts/login"><span class="glyphicon glyphicon-lock"></span> Login</a>
+      </li>
+      {% endif %}
       <li>
         <a href="/info"><span class="glyphicon glyphicon-info-sign"></span> What is this?</a>
       </li>
