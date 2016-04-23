@@ -42,17 +42,16 @@ INSTALLED_APPS = (
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.amazon',
-    'allauth.socialaccount.providers.baidu',
-    'allauth.socialaccount.providers.bitbucket_oauth2',
-    'allauth.socialaccount.providers.dropbox_oauth2',
+    #'allauth.socialaccount.providers.amazon',
+    #'allauth.socialaccount.providers.baidu',
+    #'allauth.socialaccount.providers.bitbucket_oauth2',
+    #'allauth.socialaccount.providers.dropbox_oauth2',
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.linkedin_oauth2',
+    #'allauth.socialaccount.providers.linkedin_oauth2',
     'allauth.socialaccount.providers.reddit',
     'allauth.socialaccount.providers.vk',
-    'allauth.socialaccount.providers.weibo',
 )
 
 MIDDLEWARE_CLASSES = (
