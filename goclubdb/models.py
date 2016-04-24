@@ -3,6 +3,7 @@ from django import forms
 from django.forms import ModelForm
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
+from reversion import revisions as reversion
 
 @python_2_unicode_compatible
 class Layer(models.Model):
@@ -18,6 +19,9 @@ class Layer(models.Model):
     website     = models.URLField('Website of the organisation, if any')
     color       = models.CharField('Color of the marker; must be a valid HTML color name', max_length=25)
 
+reversion.register(Layer)
+
+@python_2_unicode_compatible
 class Clubtype(models.Model):
     # List of known club types with marker types
     def __str__(self):
@@ -26,6 +30,9 @@ class Clubtype(models.Model):
     description = models.TextField('What does this type include')
     iconurl     = models.CharField('What icon picture to use for this type of club', blank=True, null=True, max_length=200)
 
+reversion.register(Clubtype)
+
+@python_2_unicode_compatible
 class Clubstatus(models.Model):
     # List of known club statuses with marker types
     def __str__(self):
@@ -34,6 +41,9 @@ class Clubstatus(models.Model):
     description = models.TextField('What does this status mean?')
     iconclass   = models.CharField('What marker shape to use for this status', blank=True, null=True, max_length=200)
 
+reversion.register(Clubstatus)
+
+@python_2_unicode_compatible
 class Club(models.Model):
     def __str__(self):
         return self.name
@@ -51,6 +61,8 @@ class Club(models.Model):
     clubtype    = models.ForeignKey(Clubtype,   on_delete=models.CASCADE, null=True, blank=True)
     lat         = models.FloatField('Decimal latitude')
     lon         = models.FloatField('Decimal longitude')
+
+reversion.register(Club)
 
 class LayerForm(ModelForm):
     class Meta:
