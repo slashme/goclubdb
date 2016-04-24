@@ -165,7 +165,3 @@ LOGIN_REDIRECT_URL = "/"
 
 #Setup for avatar support
 SOCIALACCOUNT_AVATAR_SUPPORT = 'avatar'
-
-#Reddit stuff
-REDDIT_APP_ID = ''
-REDDIT_API_SECRET = ''
