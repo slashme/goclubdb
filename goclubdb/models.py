@@ -4,6 +4,8 @@ from django.forms import ModelForm
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from reversion import revisions as reversion
+from reversion.admin import VersionAdmin
+from django.contrib import admin
 
 @python_2_unicode_compatible
 class Layer(models.Model):
@@ -20,6 +22,11 @@ class Layer(models.Model):
     color       = models.CharField('Color of the marker; must be a valid HTML color name', max_length=25)
 
 reversion.register(Layer)
+
+class LayerAdmin(VersionAdmin):
+    pass
+
+admin.site.register(Layer, LayerAdmin)
 
 @python_2_unicode_compatible
 class Clubtype(models.Model):

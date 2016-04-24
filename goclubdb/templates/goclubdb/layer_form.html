@@ -6,6 +6,11 @@
 
 <h1><a href=/layers/>Back to main list</a></h1>
 <h2>Update layer</h2>
+{% if request.user.is_authenticated %}
+<h3>Editing as {{ request.user.username }}</h3>
+{% else %}
+<h3>Editing as anonymous</h3>
+{% endif %}
 <form action="" method="POST">
     {% csrf_token %}
     <table>
