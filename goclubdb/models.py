@@ -18,6 +18,7 @@ class Layer(models.Model):
     website     = models.URLField('Website of the organisation, if any')
     color       = models.CharField('Color of the marker; must be a valid HTML color name', max_length=25)
 
+@python_2_unicode_compatible
 class Clubtype(models.Model):
     # List of known club types with marker types
     def __str__(self):
@@ -26,6 +27,7 @@ class Clubtype(models.Model):
     description = models.TextField('What does this type include')
     iconurl     = models.CharField('What icon picture to use for this type of club', blank=True, null=True, max_length=200)
 
+@python_2_unicode_compatible
 class Clubstatus(models.Model):
     # List of known club statuses with marker types
     def __str__(self):
@@ -34,6 +36,7 @@ class Clubstatus(models.Model):
     description = models.TextField('What does this status mean?')
     iconclass   = models.CharField('What marker shape to use for this status', blank=True, null=True, max_length=200)
 
+@python_2_unicode_compatible
 class Club(models.Model):
     def __str__(self):
         return self.name
