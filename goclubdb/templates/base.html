@@ -66,7 +66,7 @@ a[href*="//"]::after {
         <a href="http://umap.openstreetmap.fr/map/go-clubs_76310"><span class="glyphicon glyphicon-globe"></span> View the map</a>
       </li>
       {% if request.user.is_authenticated %}
-      <li>
+      <li style="padding-top: 15px; color: #999">
         {% if request.user.first_name or request.user.last_name %}
           {{ request.user.first_name }} {{ request.user.last_name }}
         {% else %}
