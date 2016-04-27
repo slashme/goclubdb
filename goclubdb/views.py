@@ -5,6 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
 from django.core.urlresolvers import reverse_lazy
+from reversion import revisions as reversion
 
 from .models import Layer, Club, Clubtype, Clubstatus, ClubForm, LayerForm, ClubtypeForm, ClubstatusForm
 
@@ -47,6 +48,9 @@ class LayerCreate(CreateView):
 class LayerUpdate(UpdateView):
     model = Layer
     form_class = LayerForm
+    def get_initial(self):
+        user = self.request.user.username
+        import pdb; pdb.set_trace()
 
 class ClubCreate(CreateView):
     model = Club

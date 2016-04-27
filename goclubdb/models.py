@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models, transaction
 from django import forms
 from django.forms import ModelForm
 from django.utils.encoding import python_2_unicode_compatible
@@ -6,8 +6,11 @@ from django.utils.translation import ugettext_lazy as _
 from reversion import revisions as reversion
 from reversion.admin import VersionAdmin
 from django.contrib import admin
+from django.contrib.auth.models import User
+import allauth
 
 @python_2_unicode_compatible
+@reversion.register
 class Layer(models.Model):
     # Table of map layers: each one should be an organisation, e.g. a country's clubs
     def __str__(self):
@@ -20,8 +23,12 @@ class Layer(models.Model):
     description = models.TextField('Description of the layer')
     website     = models.URLField('Website of the organisation, if any')
     color       = models.CharField('Color of the marker; must be a valid HTML color name', max_length=25)
-
-reversion.register(Layer)
+    import pdb; pdb.set_trace()
+#    @reversion.create_revision()
+#    def save(self, *args, **kwargs):
+#        import pdb; pdb.set_trace()
+#        reversion.set_user(kwargs['request'].user)
+#        super(Layer, self).save(*args, **kwargs)
 
 class LayerAdmin(VersionAdmin):
     pass
