@@ -6,6 +6,7 @@ from django.views.generic.list import ListView
 from django.views.generic import DetailView
 from django.core.urlresolvers import reverse_lazy
 from reversion import revisions as reversion
+from django.db import models, transaction
 
 from .models import Layer, Club, Clubtype, Clubstatus, ClubForm, LayerForm, ClubtypeForm, ClubstatusForm
 
@@ -48,9 +49,11 @@ class LayerCreate(CreateView):
 class LayerUpdate(UpdateView):
     model = Layer
     form_class = LayerForm
-    def get_initial(self):
-        user = self.request.user.username
-        import pdb; pdb.set_trace()
+    def get_context_data(self, **kwargs):
+        context = super(LayerUpdate, self).get_context_data(**kwargs)
+        current_user = self.request.user
+        context['current_user'] = current_user
+        return context
 
 class ClubCreate(CreateView):
     model = Club
