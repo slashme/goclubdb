@@ -1,8 +1,13 @@
-from django.db import models
+from django.db import models, transaction
 from django import forms
 from django.forms import ModelForm
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
+from reversion import revisions as reversion
+from reversion.admin import VersionAdmin
+from django.contrib import admin
+from django.contrib.auth.models import User
+import allauth
 
 @python_2_unicode_compatible
 class Layer(models.Model):
@@ -17,6 +22,13 @@ class Layer(models.Model):
     description = models.TextField('Description of the layer')
     website     = models.URLField('Website of the organisation, if any')
     color       = models.CharField('Color of the marker; must be a valid HTML color name', max_length=25)
+
+reversion.register(Layer)
+
+class LayerAdmin(VersionAdmin):
+    pass
+
+admin.site.register(Layer, LayerAdmin)
 
 @python_2_unicode_compatible
 class Clubtype(models.Model):
@@ -54,6 +66,11 @@ class Club(models.Model):
     clubtype    = models.ForeignKey(Clubtype,   on_delete=models.CASCADE, null=True, blank=True)
     lat         = models.FloatField('Decimal latitude')
     lon         = models.FloatField('Decimal longitude')
+
+class ClubAdmin(VersionAdmin):
+    pass
+
+admin.site.register(Club, ClubAdmin)
 
 class LayerForm(ModelForm):
     class Meta:

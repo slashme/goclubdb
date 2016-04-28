@@ -5,3 +5,4 @@ psycopg2==2.6.1
 whitenoise==2.0.6
 django-allauth==0.25.2
 django-avatar==3.0.0
+django-reversion==1.10.2
