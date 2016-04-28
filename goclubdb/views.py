@@ -63,18 +63,18 @@ class ClubCreate(CreateView):
     form_class = ClubForm
 
 #Create club with layer pre-populated
-class ClubCreateLayer(CreateView):
+class ClubCreateLayer(RevisionMixin, CreateView):
     model = Club
     form_class = ClubForm
     def get_initial(self):
         layer = get_object_or_404(Layer, name=self.kwargs.get('name'))
         return { 'layer':layer }
 
-class ClubUpdate(UpdateView):
+class ClubUpdate(RevisionMixin, UpdateView):
     model = Club
     form_class = ClubForm
 
-class ClubDelete(DeleteView):
+class ClubDelete(RevisionMixin, DeleteView):
     model = Club
     form_class = ClubForm
 
