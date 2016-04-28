@@ -50,7 +50,7 @@ class LayerList(ListView):
     model = Layer
     form_class = LayerForm
 
-class LayerCreate(CreateView):
+class LayerCreate(RevisionMixin, CreateView):
     model = Layer
     form_class = LayerForm
 
