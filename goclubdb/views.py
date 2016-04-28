@@ -10,6 +10,15 @@ from django.db import models, transaction
 
 from .models import Layer, Club, Clubtype, Clubstatus, ClubForm, LayerForm, ClubtypeForm, ClubstatusForm
 
+#mixin to log revisions: see https://github.com/etianen/django-reversion/issues/461
+class RevisionMixin(object):
+
+    @reversion.create_revision()
+    def dispatch(self, request, *args, **kwargs):
+        if request.method in ("GET", "POST", "PATCH", "PUT") and request.user.is_authenticated():
+            reversion.set_user(request.user)
+        return super(RevisionMixin, self).dispatch(request, *args, **kwargs)
+
 #Static info page
 def info(request):
     layers = Layer.objects.all()
@@ -46,14 +55,9 @@ class LayerCreate(CreateView):
     model = Layer
     form_class = LayerForm
 
-class LayerUpdate(UpdateView):
+class LayerUpdate(RevisionMixin, UpdateView):
     model = Layer
     form_class = LayerForm
-    def get_context_data(self, **kwargs):
-        context = super(LayerUpdate, self).get_context_data(**kwargs)
-        current_user = self.request.user
-        context['current_user'] = current_user
-        return context
 
 class ClubCreate(CreateView):
     model = Club

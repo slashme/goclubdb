@@ -23,11 +23,6 @@ class Layer(models.Model):
     website     = models.URLField('Website of the organisation, if any')
     color       = models.CharField('Color of the marker; must be a valid HTML color name', max_length=25)
 #    import pdb; pdb.set_trace()
-    @reversion.create_revision()
-    def save(self, *args, **kwargs):
-        import pdb; pdb.set_trace()
-        reversion.set_user(kwargs['request'].user)
-        super(Layer, self).save(*args, **kwargs)
 
 reversion.register(Layer)
 
