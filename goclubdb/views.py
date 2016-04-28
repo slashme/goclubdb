@@ -15,7 +15,7 @@ from .models import Layer, Club, Clubtype, Clubstatus, ClubForm, LayerForm, Club
 class RevisionMixin(object):
     @reversion.create_revision()
     def dispatch(self, request, *args, **kwargs):
-        if request.method in ("GET", "POST", "PATCH", "PUT") and request.user.is_authenticated():
+        if request.method in ("POST", "PATCH", "PUT") and request.user.is_authenticated():
             reversion.set_user(request.user)
         return super(RevisionMixin, self).dispatch(request, *args, **kwargs)
 
