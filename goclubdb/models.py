@@ -7,6 +7,8 @@ from reversion import revisions as reversion
 from reversion.admin import VersionAdmin
 from django.contrib import admin
 from django.contrib.auth.models import User
+from django.shortcuts import redirect
+from reversion.models import Revision
 import allauth
 
 @python_2_unicode_compatible
@@ -79,6 +81,17 @@ class ClubAdmin(VersionAdmin):
     pass
 
 admin.site.register(Club, ClubAdmin)
+
+class RevisionAdmin(admin.ModelAdmin):
+    list_display = ('user', 'comment', 'date_created')
+    search_fields = ('=user__username', '=user__email')
+    date_hierarchy = ('date_created')
+
+    def change_view(self, request, obj=None):
+        self.message_user(request, 'You cannot change history.')
+        return redirect('admin:reversion_revision_changelist')
+
+admin.site.register(Revision, RevisionAdmin)
 
 class LayerForm(ModelForm):
     class Meta:
