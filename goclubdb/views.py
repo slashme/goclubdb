@@ -28,12 +28,18 @@ def index(request):
     layers = Layer.objects.all()
     return render(request, 'layerlist.html', {'layers': layers})
 
-def clublist(request, layername):
-    layer = Layer.objects.filter(name=layername)
-    if len(layer) != 1: #Must be one and only one layer with this name.
-        return redirect('/') #Redirect to layer list
-    clubs = Club.objects.filter(layer__name=layername)
-    return render(request, 'clublist.html', {'clubs': clubs, 'layer': layer[0]})
+class ClubList(ListView):
+    model = Club
+    form_class = ClubForm
+
+    def get_queryset(self):
+        self.layer = get_object_or_404(Layer, name=self.args[0])
+        return Club.objects.filter(layer=self.layer)
+
+    def get_context_data(self, **kwargs):
+        context = super(ClubList, self).get_context_data(**kwargs)
+        context['layer'] = self.layer
+        return context
 
 def clubdetail(request, clubid):
     club = Club.objects.filter(id=clubid)
