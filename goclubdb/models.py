@@ -70,9 +70,9 @@ class Club(models.Model):
     def as_json(self):
         clubdict = dict(geometry = dict(type='Point', coordinates = [self.lon, self.lat]), layer = self.layer.name, type='Feature', properties = dict(description = ' , '.join(filter(None,[self.website, self.meetplace, self.meettime, self.contact])), name = self.name))
         if (self.clubtype is not None) and self.clubtype.name=="individual":
-            clubdict['properties']['_storage_options']=dict(iconclass='Ball')
+            clubdict['properties']['_storage_options']=dict(iconClass='Ball')
         elif (self.clubstatus is not None) and self.clubstatus.name=="inactive":
-            clubdict['properties']['_storage_options']=dict(iconclass='Circle')
+            clubdict['properties']['_storage_options']=dict(iconClass='Circle')
         return clubdict
 
 class ClubAdmin(VersionAdmin):
