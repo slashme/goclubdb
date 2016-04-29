@@ -8,6 +8,7 @@ from django.core.urlresolvers import reverse_lazy
 from reversion import revisions as reversion
 from django.db import models, transaction
 from django.contrib.auth.mixins import LoginRequiredMixin
+import json
 
 from .models import Layer, Club, Clubtype, Clubstatus, ClubForm, LayerForm, ClubtypeForm, ClubstatusForm
 
@@ -27,6 +28,11 @@ def info(request):
 def index(request):
     layers = Layer.objects.all()
     return render(request, 'layerlist.html', {'layers': layers})
+
+def clublistjson(request, layername):
+    clubs = Club.objects.filter(layer__name=layername)
+    results = [ob.as_json() for ob in clubs]
+    return HttpResponse(json.dumps(results, indent=2, ensure_ascii=False, encoding='utf8'), content_type="application/json")
 
 class ClubList(ListView):
     model = Club
