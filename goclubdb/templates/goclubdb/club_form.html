@@ -138,17 +138,17 @@ OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
       </tr>
       <tr>
         <td colspan="2" style="font-weight:bold">Look up address from Openstreetmap Nominatim (Not guaranteed! Check the results!)</td>
-        <td style="text-align:center"><button type="button" onclick="addresslookup()">look up address</button></td>
+        <td style="text-align:right"><button type="button" onclick="addresslookup()">look up address</button></td>
       </tr>
       <tr class="fieldWrapper">
         <th>{{ form.postcode.label_tag }}</th>
         <td>{{ form.postcode }}{{ form.postcode.errors }}</td>
-        <td><button type="button" onclick="fillpostcode()">look up postcode</button></td>
+        <td style="text-align:right"><button type="button" onclick="fillpostcode()">look up postcode</button></td>
       </tr>
       <tr class="fieldWrapper">
         <th>{{ form.province.label_tag }}</th>
         <td>{{ form.province }}{{ form.province.errors }}</td>
-        <td><button type="button" onclick="fillprovince()">look up province</button></td>
+        <td style="text-align:right"><button type="button" onclick="fillprovince()">look up province</button></td>
       </tr>
       <tr class="fieldWrapper">
         <th>{{ form.contact.label_tag }}</th>
