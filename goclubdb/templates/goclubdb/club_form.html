@@ -74,18 +74,6 @@ OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
 
 });
 
-  function fillprovince() {
-    var s = document.createElement('script');
-    s.src = 'http://api.geonames.org/countrySubdivisionJSON?formatted=true&lat='+document.getElementById("id_lat").value+'&lng='+document.getElementById("id_lon").value+'&lang=local&username=slashme&callback=cb3';
-    console.log(s.src);
-    document.getElementById('callbackscript').innerHTML="";
-    document.getElementById('callbackscript').appendChild(s);
-  }
-
-  cb3 = function cb3(json) {
-    if (typeof json.adminName1 != "undefined") {document.getElementById("id_province").value = json.adminName1};
-  }
-
   function fillpostcode() {
     var s = document.createElement('script');
     s.src = 'http://nominatim.openstreetmap.org/reverse?json_callback=cb&format=json&lat='+document.getElementById("id_lat").value+'&lon='+document.getElementById("id_lon").value+'&addressdetails=1';
@@ -144,11 +132,6 @@ OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
         <th>{{ form.postcode.label_tag }}</th>
         <td>{{ form.postcode }}{{ form.postcode.errors }}</td>
         <td><button type="button" onclick="fillpostcode()">look up postcode</button></td>
-      </tr>
-      <tr class="fieldWrapper">
-        <th>{{ form.province.label_tag }}</th>
-        <td>{{ form.province }}{{ form.province.errors }}</td>
-        <td><button type="button" onclick="fillprovince()">look up province</button></td>
       </tr>
       <tr class="fieldWrapper">
         <th>{{ form.contact.label_tag }}</th>
