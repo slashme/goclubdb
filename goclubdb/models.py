@@ -68,7 +68,6 @@ class Club(models.Model):
     clubtype    = models.ForeignKey(Clubtype,   on_delete=models.CASCADE, null=True, blank=True)
     lat         = models.FloatField('Decimal latitude')
     lon         = models.FloatField('Decimal longitude')
-    province    = models.CharField('Province or state', max_length=52, null=True, blank=True)
 
     def as_json(self):
         clubdict = dict(geometry = dict(type='Point', coordinates = [self.lon, self.lat]), layer = self.layer.name, type='Feature', properties = dict(description = ' , '.join(filter(None,[self.website, self.meetplace, self.meettime, self.contact])), name = self.name))
