@@ -112,7 +112,7 @@ class ClubstatusForm(ModelForm):
 class ClubForm(ModelForm):
     class Meta:
         model = Club
-        fields = ['name', 'meettime', 'meetplace', 'postcode', 'province', 'contact', 'website', 'layer', 'clubstatus', 'clubtype', 'lat', 'lon']
+        fields = ['name', 'meettime', 'meetplace', 'postcode', 'contact', 'website', 'layer', 'clubstatus', 'clubtype', 'lat', 'lon']
         labels  = {
                 'clubstatus': _('Club status'),
                 'clubtype':   _('Club type'),
