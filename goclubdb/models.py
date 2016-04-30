@@ -71,7 +71,7 @@ class Club(models.Model):
     province    = models.CharField('Province or state', max_length=100, null=True, blank=True)
 
     def as_json(self):
-        clubdict = dict(geometry = dict(type='Point', coordinates = [self.lon, self.lat]), layer = self.layer.name, type='Feature', properties = dict(description = ' , '.join(filter(None,[self.website, self.meetplace, self.meettime, self.contact])), name = self.name))
+        clubdict = dict(geometry = dict(type='Point', coordinates = [self.lon, self.lat]), layer = self.layer.name, type='Feature', properties = dict(description = ' , '.join(filter(None,[self.website, self.meetplace, self.meettime, self.contact, 'edit: https://goclubdb.herokuapp.com'+self.get_absolute_url()])), name = self.name))
         if (self.clubtype is not None) and self.clubtype.name=="individual":
             clubdict['properties']['_storage_options']=dict(iconClass='Ball')
         elif (self.clubstatus is not None) and self.clubstatus.name=="inactive":
