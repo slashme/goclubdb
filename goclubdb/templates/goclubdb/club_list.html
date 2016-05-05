@@ -11,18 +11,18 @@
 <h4><a href="/club/{{ layer.name }}/create">Add a club</a></h4>
 <table class="sortable">
   <tr>
-    <th></th>
     <th style="text-align:center">Province<br/>or state</th>
     <th style="text-align:center">Postal<br/>code</th>
     <th>Club name</th>
+    <th class="sorttable_nosort"></th>
     <th>Club website</th>
   </tr>
   {% for club in object_list %}
   <tr>
-    <td><a href=/club/{{club.id}}/edit>[Edit]</a></td> 
     <td>{% if club.province == None %}{{ "" }}{% else %}{{ club.province }}{% endif %}</td> 
     <td>{% if club.postcode == None %}{{ "" }}{% else %}{{ club.postcode }}{% endif %}</td> 
     <td><a href=/club/{{club.id}}>{{ club.name }}</a></td> 
+    <td><a href=/club/{{club.id}}/edit>[Edit]</a></td> 
     <td><a href={{ club.website }}>{{ club.website }}</a></td>
   </tr>
   {% endfor %}
