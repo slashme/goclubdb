@@ -22,8 +22,11 @@ class RevisionMixin(object):
 
 #Static info page
 def info(request):
-    layers = Layer.objects.all()
     return render(request, 'info.html')
+
+#Custom login page
+def login(request):
+    return render(request, 'login.html')
 
 def index(request):
     layers = Layer.objects.all()
