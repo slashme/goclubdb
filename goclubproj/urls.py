@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^$', goclubdb.views.LayerList.as_view(), name='layer_list'),
     url(r'^info$', goclubdb.views.info, name='info'),
     url(r'^layers/$', goclubdb.views.LayerList.as_view(), name='layer_list'),
+    url(r'^layers/json$', goclubdb.views.layerlistjson, name='layerlistjson'),
     url(r'^clubs/([\w-]+)$', goclubdb.views.ClubList.as_view(), name='ClubList'),
     url(r'^clubs/(?P<layername>[\w-]+)/json$', goclubdb.views.clublistjson, name='clublistjson'),
     url(r'^club/(?P<clubid>[0-9]+)$', goclubdb.views.clubdetail, name='clubdetail'),

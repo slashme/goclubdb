@@ -25,6 +25,10 @@ class Layer(models.Model):
     website     = models.URLField('Website of the organisation, if any')
     color       = models.CharField('Color of the marker; must be a valid HTML color name', max_length=25)
 
+    def as_json(self):
+        layerdict = dict(name = self.name, description = self.description, website = self.website, color = self.color)
+        return layerdict
+
 reversion.register(Layer)
 
 class LayerAdmin(VersionAdmin):
