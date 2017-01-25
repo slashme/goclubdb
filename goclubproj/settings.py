@@ -166,3 +166,5 @@ LOGIN_REDIRECT_URL = "/"
 
 #Setup for avatar support
 SOCIALACCOUNT_AVATAR_SUPPORT = 'avatar'
+
+SESSION_ENGINE= 'django.contrib.sessions.backends.signed_cookies'
