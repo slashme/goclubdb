@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block content %}
-<script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+<script src="https://www.openlayers.org/api/OpenLayers.js"></script>
 <script>
 var map,vectorLayer;
 var lat    =   {% if form.lat.value == None %}{{ 0.0 }}{% else %}{{ form.lat.value }}{% endif %};
@@ -76,7 +76,7 @@ OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
 
   function fillprovince() {
     var s = document.createElement('script');
-    s.src = 'http://api.geonames.org/countrySubdivisionJSON?formatted=true&lat='+document.getElementById("id_lat").value+'&lng='+document.getElementById("id_lon").value+'&lang=local&username=slashme&callback=cb3';
+    s.src = 'https://api.geonames.org/countrySubdivisionJSON?formatted=true&lat='+document.getElementById("id_lat").value+'&lng='+document.getElementById("id_lon").value+'&lang=local&username=slashme&callback=cb3';
     console.log(s.src);
     document.getElementById('callbackscript').innerHTML="";
     document.getElementById('callbackscript').appendChild(s);
@@ -88,7 +88,7 @@ OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
 
   function fillpostcode() {
     var s = document.createElement('script');
-    s.src = 'http://nominatim.openstreetmap.org/reverse?json_callback=cb&format=json&lat='+document.getElementById("id_lat").value+'&lon='+document.getElementById("id_lon").value+'&addressdetails=1';
+    s.src = 'https://nominatim.openstreetmap.org/reverse?json_callback=cb&format=json&lat='+document.getElementById("id_lat").value+'&lon='+document.getElementById("id_lon").value+'&addressdetails=1';
     document.getElementById('callbackscript').innerHTML="";
     document.getElementById('callbackscript').appendChild(s);
   }
@@ -99,7 +99,7 @@ OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
 
   function addresslookup() {
     var s = document.createElement('script');
-    s.src = 'http://nominatim.openstreetmap.org/search?format=json&limit=1&json_callback=cb2&q='+document.getElementById("id_meetplace").value;
+    s.src = 'https://nominatim.openstreetmap.org/search?format=json&limit=1&json_callback=cb2&q='+document.getElementById("id_meetplace").value;
     document.getElementById('addrscript').innerHTML="";
     document.getElementById('addrscript').appendChild(s);
   }
