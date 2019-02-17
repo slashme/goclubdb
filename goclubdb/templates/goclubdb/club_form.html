@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block content %}
-<script src="https://www.openlayers.org/api/OpenLayers.js"></script>
+<script src="{% static "OpenLayers.js" %}"></script>
 <script>
 var map,vectorLayer;
 var lat    =   {% if form.lat.value == None %}{{ 0.0 }}{% else %}{{ form.lat.value }}{% endif %};
