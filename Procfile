@@ -1,1 +1,1 @@
-web: gunicorn goclubproj.wsgi --log-file -
+web: gunicorn goclubproj.wsgi

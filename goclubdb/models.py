@@ -1,7 +1,6 @@
 from django.db import models, transaction
 from django import forms
 from django.forms import ModelForm
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from reversion import revisions as reversion
 from reversion.admin import VersionAdmin
@@ -11,7 +10,6 @@ from django.shortcuts import redirect
 from reversion.models import Revision
 import allauth
 
-@python_2_unicode_compatible
 class Layer(models.Model):
     # Table of map layers: each one should be an organisation, e.g. a country's clubs
     def __str__(self):
@@ -36,7 +34,6 @@ class LayerAdmin(VersionAdmin):
 
 admin.site.register(Layer, LayerAdmin)
 
-@python_2_unicode_compatible
 class Clubtype(models.Model):
     # List of known club types with marker types
     def __str__(self):
@@ -45,7 +42,6 @@ class Clubtype(models.Model):
     description = models.TextField('What does this type include')
     iconurl     = models.CharField('What icon picture to use for this type of club', blank=True, null=True, max_length=200)
 
-@python_2_unicode_compatible
 class Clubstatus(models.Model):
     # List of known club statuses with marker types
     def __str__(self):
@@ -54,7 +50,6 @@ class Clubstatus(models.Model):
     description = models.TextField('What does this status mean?')
     iconclass   = models.CharField('What marker shape to use for this status', blank=True, null=True, max_length=200)
 
-@python_2_unicode_compatible
 class Club(models.Model):
     def __str__(self):
         return self.name
