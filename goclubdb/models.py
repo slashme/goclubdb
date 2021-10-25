@@ -29,8 +29,8 @@ class Layer(models.Model):
 
 #reversion.register(Layer)
 
-class LayerAdmin(VersionAdmin):
-    pass
+#class LayerAdmin(VersionAdmin):
+#    pass
 
 admin.site.register(Layer, LayerAdmin)
 
@@ -77,8 +77,8 @@ class Club(models.Model):
             clubdict['properties']['_storage_options']=dict(iconClass='Circle')
         return clubdict
 
-class ClubAdmin(VersionAdmin):
-    pass
+#class ClubAdmin(VersionAdmin):
+#    pass
 
 admin.site.register(Club, ClubAdmin)
 
