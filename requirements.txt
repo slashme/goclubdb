@@ -2,4 +2,4 @@ django
 gunicorn
 django-heroku
 django-allauth
-django-reversion
+#django-reversion

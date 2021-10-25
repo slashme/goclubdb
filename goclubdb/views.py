@@ -5,7 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
 from django.urls import reverse_lazy
-from reversion import revisions as reversion
+#from reversion import revisions as reversion
 from django.db import models, transaction
 from django.contrib.auth.mixins import LoginRequiredMixin
 import json
@@ -13,12 +13,12 @@ import json
 from .models import Layer, Club, Clubtype, Clubstatus, ClubForm, LayerForm, ClubtypeForm, ClubstatusForm
 
 #mixin to log revisions: see https://github.com/etianen/django-reversion/issues/461
-class RevisionMixin(object):
-    @reversion.create_revision()
-    def dispatch(self, request, *args, **kwargs):
-        if request.method in ("POST", "PATCH", "PUT") and request.user.is_authenticated:
-            reversion.set_user(request.user)
-        return super(RevisionMixin, self).dispatch(request, *args, **kwargs)
+#class RevisionMixin(object):
+#    @reversion.create_revision()
+#    def dispatch(self, request, *args, **kwargs):
+#        if request.method in ("POST", "PATCH", "PUT") and request.user.is_authenticated:
+#            reversion.set_user(request.user)
+#        return super(RevisionMixin, self).dispatch(request, *args, **kwargs)
 
 #Static info page
 def info(request):
