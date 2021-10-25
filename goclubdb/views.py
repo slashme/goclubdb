@@ -71,31 +71,31 @@ class LayerList(ListView):
     model = Layer
     form_class = LayerForm
 
-class LayerCreate(RevisionMixin, LoginRequiredMixin, CreateView):
+class LayerCreate(LoginRequiredMixin, CreateView):
     model = Layer
     form_class = LayerForm
 
-class LayerUpdate(RevisionMixin, LoginRequiredMixin, UpdateView):
+class LayerUpdate(LoginRequiredMixin, UpdateView):
     model = Layer
     form_class = LayerForm
 
-class ClubCreate(RevisionMixin, LoginRequiredMixin, CreateView):
+class ClubCreate(LoginRequiredMixin, CreateView):
     model = Club
     form_class = ClubForm
 
 #Create club with layer pre-populated
-class ClubCreateLayer(RevisionMixin, LoginRequiredMixin, CreateView):
+class ClubCreateLayer(LoginRequiredMixin, CreateView):
     model = Club
     form_class = ClubForm
     def get_initial(self):
         layer = get_object_or_404(Layer, name=self.kwargs.get('name'))
         return { 'layer':layer }
 
-class ClubUpdate(RevisionMixin, LoginRequiredMixin, UpdateView):
+class ClubUpdate(LoginRequiredMixin, UpdateView):
     model = Club
     form_class = ClubForm
 
-class ClubDelete(RevisionMixin, LoginRequiredMixin, DeleteView):
+class ClubDelete(LoginRequiredMixin, DeleteView):
     model = Club
     form_class = ClubForm
 
