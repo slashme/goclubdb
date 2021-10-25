@@ -79,8 +79,8 @@ class Club(models.Model):
 
 #class ClubAdmin(VersionAdmin):
 #    pass
-
-admin.site.register(Club, ClubAdmin)
+#
+#admin.site.register(Club, ClubAdmin)
 
 #class RevisionAdmin(admin.ModelAdmin):
 #    list_display = ('user', 'comment', 'date_created')
