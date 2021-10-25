@@ -32,7 +32,7 @@ class Layer(models.Model):
 #class LayerAdmin(VersionAdmin):
 #    pass
 
-admin.site.register(Layer, LayerAdmin)
+#admin.site.register(Layer, LayerAdmin)
 
 class Clubtype(models.Model):
     # List of known club types with marker types
