@@ -38,7 +38,7 @@ def layerlistjson(request): #List of layers as JSON array
     return HttpResponse(json.dumps(results, indent=2, ensure_ascii=False, sort_keys=True), content_type="application/json")
 
 def clublistjson(request, layername):
-    clubs = Club.objects.filter(layer__name=layername).order_by("name")
+    clubs = Club.objects.filter(layer__name=layername).order_by("id")
     results = dict(type = "FeatureCollection", features = [ob.as_json() for ob in clubs])
     return HttpResponse(json.dumps(results, indent=2, ensure_ascii=False, sort_keys=True), content_type="application/json")
 
