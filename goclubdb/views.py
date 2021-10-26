@@ -35,12 +35,12 @@ def index(request):
 def layerlistjson(request): #List of layers as JSON array
     layers = Layer.objects.order_by("name")
     results = [ob.as_json() for ob in layers]
-    return HttpResponse(json.dumps(results, indent=2, ensure_ascii=False, encoding='utf8', sort_keys=True), content_type="application/json")
+    return HttpResponse(json.dumps(results, indent=2, ensure_ascii=False, sort_keys=True), content_type="application/json")
 
 def clublistjson(request, layername):
     clubs = Club.objects.filter(layer__name=layername).order_by("name")
     results = dict(type = "FeatureCollection", features = [ob.as_json() for ob in clubs])
-    return HttpResponse(json.dumps(results, indent=2, ensure_ascii=False, encoding='utf8', sort_keys=True), content_type="application/json")
+    return HttpResponse(json.dumps(results, indent=2, ensure_ascii=False, sort_keys=True), content_type="application/json")
 
 class ClubList(ListView):
     model = Club
